@@ -2,13 +2,13 @@
 --Date: 03/26/2016
 create database Hospital
 
-use Hospital
+use Hospital;
 
 create table Supplier(
 	Supplier_ID			nvarchar(20) not null primary key,
-	Supplier_Name		nvarchar(30) not null,
-	ContactFirstName	nvarchar(30) not null,
-	ContactLastName		nvarchar(30) not null,
+	Supplier_Name		  	nvarchar(30) not null,
+	ContactFirstName		nvarchar(30) not null,
+	ContactLastName			nvarchar(30) not null,
 	Phone				nvarchar(15) not null,
 	Email				nvarchar(20) not null,
 	Address				nvarchar(20) not null,
@@ -16,17 +16,48 @@ create table Supplier(
 	State				nvarchar(10) not null
 );
 
+
+create table Medicine(
+	Medince_ID 			nvarchar(20) not null primary key,
+	Name 				nvarchar(50) not null,
+	Supplier_ID 			nvarchar(20) not null foreign key(Supplier_ID) references Supplier(Supplier_ID),
+	UnitPrice 			money not null check(UnitPrice >= 0),  --changed by aakruthi 
+	AvailableQuantity		int not null,--changed by aakruthi
+	Description 			text
+);
+
+create table Department(
+	DepartmentID			nvarchar(20) not null primary key,--changed by aakruthi
+	Name 				nvarchar(50) not null
+);
+
+
+create table Insurance(
+	Insurance_ID 			nvarchar(20) not null primary key,
+	Name 				nvarchar(50) not null,
+	Total 				money not null check(Total > 0),
+	Date 				date not null,
+	Description 			text
+);
+
+create table Bed(
+	Bed_ID 				nvarchar(20) not null primary key,
+	Building 			nvarchar(50) not null,
+	Floor 				int not null,
+	Used 				bit
+);
+
 create table Doctor(
 	Doctor_ID			nvarchar(20) not null primary key,
 	FirstName 			nvarchar(30) not null,
 	LastName 			nvarchar(30) not null,
 	Title				nvarchar(20) not null,
-	Age					int not null check(Age >= 0),
+	Age				int not null check(Age >= 0),
 	Gender				char(1) not null check(Gender = 'F' or Gender = 'M'),
-	Department_ID		nvarchar(20) not null foreign key(Department_ID) references Department(Department_ID),
+	DepartmentID			nvarchar(20) not null foreign key(DepartmentID) references Department(DepartmentID),--changed by aakruthi
 	Phone 				nvarchar(15) not null,
 	Email				nvarchar(20) not null,
-	reportTo 			nvarchar(20) not null
+	ReportToID 			nvarchar(20) not null--changed by aakruthi
 );
 
 create table Nurse(
@@ -34,39 +65,40 @@ create table Nurse(
 	FirstName 			nvarchar(30) not null,
 	LastName 			nvarchar(30) not null,
 	Title				nvarchar(20) not null,
-	Age					int not null check(Age >= 0),
+	Age				int not null check(Age >= 0),
 	Gender				char(1) not null check(Gender = 'F' or Gender = 'M'),
-	Department_ID		nvarchar(20) not null foreign key(Department_ID) references Department(Department_ID),
+	DepartmentID			nvarchar(20) not null foreign key(DepartmentID) references Department(DepartmentID),--changed by aakruthi
 	Phone 				nvarchar(15) not null,
 	Email				nvarchar(20) not null,
-	reportTo			nvarchar(20) not null
+	ReportToID			nvarchar(20) not null--changed by aakruthi
 );
+
 
 create table Patient(
 	Patient_ID			nvarchar(20) not null primary key,
 	FirstName 			nvarchar(30) not null,
 	LastName 			nvarchar(30) not null,
 	Gender				char(1) not null check(Gender = 'F' or Gender = 'M'),
-	Age					int not null check(Age >= 0),
+	Age				int not null check(Age >= 0),
 	Statues				char(3) not null check(Statues = 'I' or Statues = 'II' or Statues = 'III' or Statues = 'IV'),
 	Phone				nvarchar(15) not null,
 	Email 				nvarchar(20) not null,
-	Department_ID		nvarchar(20) not null foreign key(Department_ID) references Department(Department_ID),
+	DepartmentID			nvarchar(20) not null foreign key(DepartmentID) references Department(DepartmentID),--changed by aakruthi
 	Bed_ID				nvarchar(20) not null foreign key(Bed_ID) references Bed(Bed_ID),
-	Insurance_ID		nvarchar(20) not null foreign key(Insurance_ID) references Insurance(Insurance_ID)
+	Insurance_ID			nvarchar(20) not null foreign key(Insurance_ID) references Insurance(Insurance_ID)
 );
 
 create table Bill(
 	Bill_ID				nvarchar(20) not null primary key,
-	Patient_ID 			nvarchar(20) not null foreign key(Patient) references Patient(Patient_ID)
+	Patient_ID 			nvarchar(20) not null foreign key(Patient_ID) references Patient(Patient_ID),
 	BillTotal 			money,
-	PaymentTotal		money,
-	InsuranceTotal		money,
+	PaymentTotal			money,
+	InsuranceTotal			money,
 	PaymentDate			date
 );
 
 create table Bill_Detail(
-	BillDetail_ID		nvarchar(20) not null primary key,
+	BillDetail_ID		        nvarchar(20) not null primary key,
 	Bill_ID 			nvarchar(20) not null foreign key(Bill_ID) references Bill(Bill_ID),
 	Medince_ID			nvarchar(20) not null foreign key(Medince_ID) references Medicine(Medince_ID),
 	Type				nvarchar(20),
@@ -78,10 +110,10 @@ create table Contract(
 	Contract_ID			nvarchar(20) not null primary key,
 	Supplier_ID			nvarchar(20) not null foreign key(Supplier_ID) references Supplier(Supplier_ID),
 	Medince_ID			nvarchar(20) not null foreign key(Medince_ID) references Medicine(Medince_ID),
-	Quantities			int not null check(Quantities > 0),
-	Price				money not null check(Price >= 0),
-	Invoice				as (Price*Quantities),
-	OrderDate			date not null default getdate()
+	Quantity			int not null check(Quantity > 0),--changed by aakruthi
+	UnitPrice		        money not null check(UnitPrice >= 0),--changed by aakruthi
+	Invoice				as (UnitPrice*Quantity),--changed by aakruthi
+	Date			        date not null default getdate()--changed by aakruthi
 );
 
 create table TreatmentTeam(
@@ -92,63 +124,35 @@ create table TreatmentTeam(
 create table MedicineUseRecord(
 	MUR_ID				nvarchar(20) not null primary key,
 	Medince_ID 			nvarchar(20) not null foreign key(Medince_ID) references Medicine(Medince_ID),
-	Doctor_ID			nvarchar(20) not null foreign key(Doctor_ID) references Doctor_ID(Doctor_ID),
+	Doctor_ID			nvarchar(20) not null foreign key(Doctor_ID) references Doctor(Doctor_ID),
 	Nurse_ID 			nvarchar(20) not null foreign key(Nurse_ID) references Nurse(Nurse_ID),
-	Quantities			int not null check(Quantities > 0),
+	Quantity			int not null check(Quantity > 0),--changed by aakruthi
 	Patient_ID			nvarchar(20) not null foreign key(Patient_ID) references Patient(Patient_ID),
 	UsedDate			date not null
 );
 
-create table Department(
-	Department_ID		nvarchar(20) not null primary key,
-	Name 				nvarchar(50) not null
-);
-
-create table Medicine(
-	Medince_ID 			nvarchar(20) not null primary key,
-	Name 				nvarchar(50) not null,
-	Supplier_ID 		nvarchar(20) not null foreign key(Supplier_ID) references Supplier(Supplier_ID),
-	Price 				money not null check(Price >= 0),
-	Quantities			int not null,
-	Description 		text
-);
-
-create table Insurance(
-	Insurance_ID 		nvarchar(20) not null primary key,
-	Name 				nvarchar(50) not null,
-	Total 				money not null check(Total > 0),
-	Date 				date not null,
-	Description 		text
-);
 
 create table Health_Attribute(
 	Health_ID 			nvarchar(20) not null primary key,
 	Patient_ID 			nvarchar(20) not null foreign key(Patient_ID) references Patient(Patient_ID),
-	Systolic_BP 		nvarchar(30) not null,
-	Diastolic_BP 		nvarchar(30) not null,
+	Systolic_BP 		        nvarchar(30) not null,
+	Diastolic_BP 			nvarchar(30) not null,
 	BloodSugar 			nvarchar(30) not null,
 	Pulse 				nvarchar(30) not null,
 	Date 				date
 );
 
 create table Register(
-	Register_ID 		nvarchar(20) not null primary key,
+	Register_ID 		        nvarchar(20) not null primary key,
 	Name 				nvarchar(50) not null,
 	Doctor_ID 			nvarchar(20) not null foreign key(Doctor_ID) references Doctor(Doctor_ID),
 	Date 				date not null
 );
 
 create table NurseSchedule(
-	Schedule_ID 		nvarchar(20) not null primary key,
+	Schedule_ID 			nvarchar(20) not null primary key,
 	Nurse_ID 			nvarchar(20) not null foreign key(Nurse_ID) references Nurse(Nurse_ID),
 	StartTime			datetime not null,
 	EndTime 			datetime not null,
 	Bed_ID 				nvarchar(20) foreign key(Bed_ID) references Bed(Bed_ID)
-);
-
-create table Bed(
-	Bed_ID 				nvarchar(20) not null primary key,
-	Building 			nvarchar(50) not null,
-	Floor 				int not null,
-	Used 				boolean
 );
