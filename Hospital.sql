@@ -20,7 +20,6 @@ create table Supplier(
 create table Medicine(
 	Medince_ID 			nvarchar(20) not null primary key,
 	Name 				nvarchar(50) not null,
-<<<<<<< HEAD
 	Supplier_ID 			nvarchar(20) not null foreign key(Supplier_ID) references Supplier(Supplier_ID),
 	UnitPrice 			money not null check(UnitPrice >= 0),  --changed by aakruthi 
 	AvailableQuantity		int not null,--changed by aakruthi
@@ -29,34 +28,16 @@ create table Medicine(
 
 create table Department(
 	DepartmentID			nvarchar(20) not null primary key,--changed by aakruthi
-=======
-	Supplier_ID 		nvarchar(20) not null foreign key(Supplier_ID) references Supplier(Supplier_ID),
-	Price 				money not null check(Price >= 0),
-	Quantities			int not null,
-	Description 		text
-);
-
-create table Department(
-	Department_ID		nvarchar(20) not null primary key,
->>>>>>> 085ab69a33f8776f8efe6da5d77c6d73062b1964
 	Name 				nvarchar(50) not null
 );
 
 
 create table Insurance(
-<<<<<<< HEAD
 	Insurance_ID 			nvarchar(20) not null primary key,
 	Name 				nvarchar(50) not null,
 	Total 				money not null check(Total > 0),
 	Date 				date not null,
 	Description 			text
-=======
-	Insurance_ID 		nvarchar(20) not null primary key,
-	Name 				nvarchar(50) not null,
-	Total 				money not null check(Total > 0),
-	Date 				date not null,
-	Description 		text
->>>>>>> 085ab69a33f8776f8efe6da5d77c6d73062b1964
 );
 
 create table Bed(
@@ -174,9 +155,4 @@ create table NurseSchedule(
 	StartTime			datetime not null,
 	EndTime 			datetime not null,
 	Bed_ID 				nvarchar(20) foreign key(Bed_ID) references Bed(Bed_ID)
-<<<<<<< HEAD
 );
-=======
-);
-
->>>>>>> 085ab69a33f8776f8efe6da5d77c6d73062b1964
