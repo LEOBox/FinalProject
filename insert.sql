@@ -60,28 +60,28 @@ insert Bed values
 (9,'2',3,1);
 
 insert Doctor values
-(0,'TESTF0','TESTL0','Doc',30,'M',0,'123123123','TEST0@test',null),
-(1,'TESTF1','TESTL1','Doc',31,'F',0,'123123123','TEST0@test',0),
-(2,'TESTF2','TESTL2','Doc',31,'M',1,'123123123','TEST0@test',null),
-(3,'TESTF3','TESTL3','Doc',34,'F',1,'123123123','TEST0@test',2),
-(4,'TESTF4','TESTL4','Doc',34,'M',1,'123123123','TEST0@test',2),
-(5,'TESTF5','TESTL5','Doc',36,'M',2,'123123123','TEST0@test',null),
-(6,'TESTF6','TESTL6','Doc',37,'F',2,'123123123','TEST0@test',5),
-(7,'TESTF7','TESTL7','Doc',41,'F',1,'123123123','TEST0@test',null),
-(8,'TESTF8','TESTL8','Doc',29,'M',3,'123123123','TEST0@test',null),
-(9,'TESTF9','TESTL8','Doc',31,'M',4,'123123123','TEST0@test',null);
+(0,'TESTF0','TESTL0','Doc',30,'M',0,'123123123','TEST0@test',null,'testPas'),
+(1,'TESTF1','TESTL1','Doc',31,'F',0,'123123123','TEST0@test',0,'testPas'),
+(2,'TESTF2','TESTL2','Doc',31,'M',1,'123123123','TEST0@test',null,'testPas'),
+(3,'TESTF3','TESTL3','Doc',34,'F',1,'123123123','TEST0@test',2,'testPas'),
+(4,'TESTF4','TESTL4','Doc',34,'M',1,'123123123','TEST0@test',2,'testPas'),
+(5,'TESTF5','TESTL5','Doc',36,'M',2,'123123123','TEST0@test',null,'testPas'),
+(6,'TESTF6','TESTL6','Doc',37,'F',2,'123123123','TEST0@test',5,'testPas'),
+(7,'TESTF7','TESTL7','Doc',41,'F',1,'123123123','TEST0@test',null,'testPas'),
+(8,'TESTF8','TESTL8','Doc',29,'M',3,'123123123','TEST0@test',null,'testPas'),
+(9,'TESTF9','TESTL8','Doc',31,'M',4,'123123123','TEST0@test',null,'testPas');
 
 insert Nurse values
-(0,'TESTF0','TESTL0','MISS',30,'M',0,'123123123','TEST0@test',null),
-(1,'TESTF1','TESTL1','MISS',31,'F',0,'123123123','TEST0@test',0),
-(2,'TESTF2','TESTL2','MISS',31,'M',1,'123123123','TEST0@test',null),
-(3,'TESTF3','TESTL3','MISS',34,'F',1,'123123123','TEST0@test',2),
-(4,'TESTF4','TESTL4','MISS',34,'M',1,'123123123','TEST0@test',2),
-(5,'TESTF5','TESTL5','MISS',36,'M',2,'123123123','TEST0@test',null),
-(6,'TESTF6','TESTL6','MISS',37,'F',2,'123123123','TEST0@test',5),
-(7,'TESTF7','TESTL7','MISS',41,'F',1,'123123123','TEST0@test',null),
-(8,'TESTF8','TESTL8','MISS',29,'M',3,'123123123','TEST0@test',null),
-(9,'TESTF9','TESTL9','MISS',31,'M',4,'123123123','TEST0@test',null);
+(0,'TESTF0','TESTL0','MISS',30,'M',0,'123123123','TEST0@test',null,'testPas'),
+(1,'TESTF1','TESTL1','MISS',31,'F',0,'123123123','TEST0@test',0,'testPas'),
+(2,'TESTF2','TESTL2','MISS',31,'M',1,'123123123','TEST0@test',null,'testPas'),
+(3,'TESTF3','TESTL3','MISS',34,'F',1,'123123123','TEST0@test',2,'testPas'),
+(4,'TESTF4','TESTL4','MISS',34,'M',1,'123123123','TEST0@test',2,'testPas'),
+(5,'TESTF5','TESTL5','MISS',36,'M',2,'123123123','TEST0@test',null,'testPas'),
+(6,'TESTF6','TESTL6','MISS',37,'F',2,'123123123','TEST0@test',5,'testPas'),
+(7,'TESTF7','TESTL7','MISS',41,'F',1,'123123123','TEST0@test',null,'testPas'),
+(8,'TESTF8','TESTL8','MISS',29,'M',3,'123123123','TEST0@test',null,'testPas'),
+(9,'TESTF9','TESTL9','MISS',31,'M',4,'123123123','TEST0@test',null,'testPas');
 
 insert Patient values
 (0,'TESTF0','TESTL0','M',20,'I','123123123','TEST@test',0,0,0),
@@ -96,16 +96,16 @@ insert Patient values
 (9,'TESTF3','TESTL3','M',45,'I','123123123','TEST@test',2,3,3);
 
 insert Bill values
-(0,0,0,0,null),
-(1,1,344,234,null),
-(2,2,345,100,null),
-(3,3,345,22,null),
-(4,4,7657,0,'2016/04/11'),
-(5,5,345,22,'2015/03/02'),
-(6,6,345,22,'2016/04/17'),
-(7,7,345,22,'2015/02/02'),
-(8,8,345,22,'2016/01/01'),
-(9,9,345,22,'2016/01/11');
+(0,0,0,0,0,null),
+(1,1,344,234,0,null),
+(2,2,345,100,0,null),
+(3,3,345,22,0,null),
+(4,4,7657,0,0,'2016/04/11'),
+(5,5,345,22,0,'2015/03/02'),
+(6,6,345,22,0,'2016/04/17'),
+(7,7,345,22,0,'2015/02/02'),
+(8,8,345,22,0,'2016/01/01'),
+(9,9,345,22,0,'2016/01/11');
 
 insert Bill_Detail values
 (0,1,1,'Medicine',100,'2015/12/12'),
@@ -120,17 +120,17 @@ insert Bill_Detail values
 (8,1,1,'Medicine',100,'2016/04/12'),
 (9,4,1,'Medicine',100,'2016/03/12');
 
-insert into contract(Contract_ID,Supplier_ID,Medince_ID,Quantity,UnitPrice,Invoice,Date)
-values (1,1,1,5,2,10,'2016/01/01'),
-(2,1,2,5,3,15,'2016/02/13'),
-(3,1,3,5,4,20,'2016/03/13'),
-(4,1,4,5,5,25,'2016/04/13'),
-(5,1,5,5,6,30,'2015/05/13'),
-(6,1,6,5,1,5,'2016/06/13'),
-(7,1,7,5,2,10,'2015/07/13'),
-(8,1,8,5,3,15,'2015/08/13'),
-(9,1,9,5,4,20,'2015/01/13'),
-(10,1,1,5,5,25,'2015/01/13');
+insert into contract(Contract_ID,Supplier_ID,Medince_ID,Quantity,UnitPrice,Date)
+values (1,1,1,5,2,'2016/01/01'),
+(2,1,2,5,3,'2016/02/13'),
+(3,1,3,5,4,'2016/03/13'),
+(4,1,4,5,5,'2016/04/13'),
+(5,1,5,5,6,'2015/05/13'),
+(6,1,6,5,1,'2016/06/13'),
+(7,1,7,5,2,'2015/07/13'),
+(8,1,8,5,3,'2015/08/13'),
+(9,1,9,5,4,'2015/01/13'),
+(10,1,1,5,5,'2015/01/13');
 
 insert into TreatmentTeam(Patient_ID,Doctor_ID)
 values (1,1),
@@ -171,16 +171,16 @@ values (1,2,70,70,80,60,'2016-01-01'),
 
 
 insert into register(Register8_ID,Name,Doctor_ID,Date)
-values (1,'xyz',1,'2016-01-01'),
-(2,'ABC',2,'2016-01-02'),
-(3,'DEF',3,'2016-01-03'),
-(4,'GHI',4,'2016-01-04'),
-(5,'JKL',5,'2016-01-05'),
-(6,'MNO',6,'2015-01-01'),
-(7,'PQR',7,'2015-01-02'),
-(8,'STU',8,'2015-01-03'),
-(9,'VWX',9,'2015-01-04'),
-(10,'ADA',2,'2015-01-05');
+values (1,'xyz','defss',1,'2016-01-01'),
+(2,'ABC','test',2,'2016-01-02'),
+(3,'DEF','ESA',3,'2016-01-03'),
+(4,'GHI','TER',4,'2016-01-04'),
+(5,'JKL','QWE',5,'2016-01-05'),
+(6,'MNO','SQW',6,'2015-01-01'),
+(7,'PQR','ASX',7,'2015-01-02'),
+(8,'STU','QWQ',8,'2015-01-03'),
+(9,'VWX','sdf',9,'2015-01-04'),
+(10,'ADA','tests',2,'2015-01-05');
 
 insert into NurseSchedule(Schedule_ID,Nurse_ID,StartTime,EndTime,Bed_ID)
 values (1,1,'6:00:00','15:00:00',1),

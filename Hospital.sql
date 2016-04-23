@@ -146,7 +146,8 @@ create table Health_Attribute(
 
 create table Register(
 	Register_ID 		nvarchar(20) not null primary key,
-	Name 				nvarchar(50) not null,
+	FirstName 			nvarchar(50) not null,
+	LastName 			nvarchar(50) not null,
 	Doctor_ID 			nvarchar(20) not null foreign key(Doctor_ID) references Doctor(Doctor_ID),
 	Date 				date not null 
 );
