@@ -115,7 +115,8 @@ create table Contract(
 	Quantity			int not null check(Quantity > 0),--changed by aakruthi
 	UnitPrice		    money not null check(UnitPrice >= 0),--changed by aakruthi
 	Invoice				as (UnitPrice*Quantity),--changed by aakruthi
-	Date			    datetime not null default getdate()--changed by aakruthi
+	Date			    datetime not null default getdate(),--changed by aakruthi
+	ArriveDate			datetime
 );
 
 create table TreatmentTeam(

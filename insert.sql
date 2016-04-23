@@ -1,5 +1,7 @@
-//author = Aakruthi
-insert supplier values 
+--author = Aakruthi
+use Hospital
+
+insert Supplier values 
 (0,'TEST0','TESTF0','TESTL0','123123123','123123@123.com','TESTAddress','TESTCity','TESTState'),
 (1,'TEST1','TESTF1','TESTL1','123123123','123123@123.com','TESTAddress','TESTCity','TESTState'),
 (2,'TEST2','TESTF2','TESTL2','123123123','123123@123.com','TESTAddress','TESTCity','TESTState'),
@@ -170,7 +172,7 @@ values (1,2,70,70,80,60,'2016-01-01'),
 
 
 
-insert into register(Register8_ID,Name,Doctor_ID,Date)
+insert into register(Register_ID,Name,Doctor_ID,Date)
 values (1,'xyz','defss',1,'2016-01-01'),
 (2,'ABC','test',2,'2016-01-02'),
 (3,'DEF','ESA',3,'2016-01-03'),
