@@ -1,0 +1,30 @@
+{% extends "adminhead.html" %}
+{% block body %}
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<br>
+		<table class="table table-striped">
+			<tr>
+				<th>Title</th>
+				<th>Operation</th>
+			</tr>
+			{% for post in posts.items %}
+			<tr>
+				<td><a href="/articles/{{post.id}}">{{post.title}}</a></td>
+				<td><a href="/admin/delete/{{post.id}}">Delete</a></td>
+			</tr>
+			{% endfor %}
+		</table>
+		<ul class="pagination">
+			{% for page in posts.iter_pages() %}
+			{% if page != posts.page %}
+				<li><a href="{{url_for("manage",page=page)}}">{{page}}</a></li>
+			{% else %}
+				<li class="active"><a href="" ><strong>{{page}}</strong></a></li>
+			{% endif %}
+			{% endfor %}
+		</ul>
+	</div>
+</div>
+
+{% endblock %}

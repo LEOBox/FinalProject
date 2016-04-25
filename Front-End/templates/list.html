@@ -1,0 +1,42 @@
+{% extends "head.html" %}
+{% block body %}
+
+<div class="row" style="background-color: #F5F6F9">
+	<div class="col-md-2" style="background-color: #339999; min-height: 650px">
+		<h3 style="color: white">About Me</h3>
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<a href="" class="thumbnail">
+					<img src="{{url_for('static',filename='uploads/DSC_0804-1.jpg')}}">
+				</a>
+				<span style="color: white">Xuzhe Dang</span>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-10" style="padding: 0px" style="padding: 0px;background-color: #F5F6F9">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+					<h1>PyPiFrog</h1>
+					{% for post in posts.items %}
+						<article>
+							<a href="/articles/{{post.id}}" style="text-decoration: None">
+								<h2>{{post.title}}</h2>
+								<p style="color:gray">{{post.types}} | {{post.date}}</p>
+							</a>
+						</article>	
+					{% endfor %}
+					<ul class="pagination">
+						{% for page in posts.iter_pages() %}
+						{% if page != posts.page %}
+						<li><a href="{{url_for("list",types=types, page=page)}}">{{page}}</a></li>
+						{% else %}
+						<li class="active"><a href="" ><strong>{{page}}</strong></a></li>
+						{% endif %}
+						{% endfor %}
+					</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

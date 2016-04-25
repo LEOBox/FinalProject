@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Welcome</title>
+</head>
+<body>
+<h1>Welcome</h1>
+{% for message in get_flashed_messages() %}
+{{message}}
+{% endfor %}
+</body>
+</html>

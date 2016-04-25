@@ -1,0 +1,357 @@
+{% extends "head.html" %}
+{% block body %}
+	<style type="text/css">
+		body{
+			background-color: #759B84;
+			font-family: Lucida Family;
+		}
+		.containers{
+			padding: 30px;
+			margin: 20px;
+			background-color: #eeeeee;
+		}
+
+		.heads{
+			text-align: center;
+		}
+
+		.heads .imgc{
+			border-radius: 100%;
+			width: 120px;
+			height: 120px;
+		}
+
+		.rows{
+			overflow: hidden;
+		}
+
+		.rows .list-left{
+			float: left;
+			width: 50%;
+		}
+
+		.rows .head{
+			text-align: center;
+		}
+
+		.rows .list-right{
+			float: left;
+			width: 49.9%;
+			border-left: 1px solid;
+		}
+		.rows .list-left .intro-left{
+			text-align: right;
+			margin-right: 50px;
+		}
+		.rows .list-left .intro-left .profile{
+			float: right; 
+			width: 50%;
+		}
+		.rows .list-right .intro-right{
+			text-align: left;
+			margin-left: 50px;
+		}
+		.rows .list-right .intro-right .contact{
+			margin-bottom: 5px;
+		}
+		.education{
+			text-align: right;
+		}
+		.education .year{
+			padding-bottom: 10px;
+		}
+		.education .university{
+			padding-bottom: 5px;
+		}
+		.education .collage{
+			padding-bottom: 5px;
+		}
+		.education .major{
+			padding-bottom: 20px;
+		}
+		.work{
+			text-align: left;
+			margin-bottom: 10px;
+		}
+		.work .time{
+			text-align: left;
+			padding-bottom: 10px;
+		}
+		.work .company{
+			text-align: left;
+		}
+		.work .experience{
+			width: 50%;
+			text-align: left;
+		}
+		.rule-left{
+			width: 300px;
+			height: 5px;
+			background-color: grey;
+			text-align: left;
+			float: right;
+			padding-bottom: 0px;
+		}
+		.rulenote-left{
+			width: 5px;
+			height: 10px;
+			background-color: grey;
+			float: right;
+			margin-left: 142.5px;
+		}
+		.rule-right{
+			width: 300px;
+			height: 5px;
+			background-color: grey;
+			text-align: left;
+			float: left;
+			padding-bottom: 0px;
+		}
+		.rulenote-right{
+			width: 5px;
+			height: 10px;
+			background-color: grey;
+			float: left;
+			margin-right: 142.5px;
+		}
+		.skillcon{
+			overflow: hidden;
+		}
+		.skill-left{
+			text-align: right;
+			padding-bottom: 10px;
+			height: 20px;
+		}
+		.skill-left .progress-left{
+			height: 17px;
+			border-radius: 5px;
+			float: right;
+			background-color: green;
+			margin-left: 10px;
+			padding-top: 2.5px;
+			padding-right: 5px;
+			color: white;
+		}
+		.skill-right{
+			text-align: left;
+			padding-bottom: 10px;
+			height: 20px;
+		}
+		.skill-right .progress-right{
+			height: 17px;
+			border-radius: 5px;
+			float: left;
+			background-color: green;
+			margin-right: 10px;
+			padding-top: 2.5px;
+			padding-left: 5px;
+			color: white;
+		}
+		.else{
+			text-align: right;
+		}
+		.else .know{
+			background-color: grey;
+			padding: 2px;
+			color: white;
+		}
+		.hobby{
+			padding-bottom: 5px;
+		}
+		.foot{
+			text-align: center;
+			padding-top: 15px;
+		}
+		.social{
+			width: 30px;
+			height: 30px;
+		}
+		a{
+			text-decoration: none;
+		}
+		.title{
+			width: 64px;
+			height: 64px;
+		}
+		.divide{
+			text-align: center;
+			padding-bottom: 10px;
+		}
+		.subtitle{
+			width: 20px;
+			height: 20px;
+		}
+	</style>	
+	<div class="containers">
+		<header class="heads">
+			<img class="imgc" src="{{url_for('static',filename='uploads/DSC_0804-1.jpg')}}">
+			<h1>Xuzhe Dang</h1>
+		</header>
+		<div class="divide">
+			<img class="title" src="https://cdn2.iconfinder.com/data/icons/thin-line-icons-for-seo-and-development-1/64/SEO_planchette_questionnaire-128.png">
+		</div>
+		<div class="rows">
+			<div class="list-left">
+				<div class="intro-left">
+					<h2>Profile</h2>
+					<div class="profile">
+						<p>I'm Xuzhe Dang. I'm from China and currently chasing my master degree in Arizon State University.
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="list-right">
+				<div class="intro-right">
+					<h2>Brief</h2>
+					<div class="contact">
+						<span>Birthday: 09/25/1992</span>
+					</div>
+					<div class="contact">
+						<span>Phone: +1(480)-868-4784</span>
+					</div>
+					<div class="contact">
+						<span>E-mail:birdhouse@live.cn</span>
+					</div>
+					<div class="contact">
+						<span>Address: 1849 S Power Rd, Mesa, AZ</span>
+					</div>
+					<div class="contact">
+						<span>Blog: www.pypifrog.xyz</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="divide">
+			<img class="title" src="https://cdn2.iconfinder.com/data/icons/thin-line-icons-for-seo-and-development-1/64/SEO_site_map-128.png">
+		</div>
+		<div class="rows">
+			<div class="list-left">
+				<div class="intro-left">
+					<h2>Education</h2>
+					<div class="education">
+						<div class="year">2016-now</div>
+						<div class="university"><strong>Arizona State University</strong></div>
+						<div class="collage"><i> Ira A. Fulton Schools of Engineering</i></div>
+						<div class="major">M.S in Informatino Technology</div>
+						<div class="year">2011-2015</div>
+						<div class="university"><strong>Huazhong Agricultural University</strong></div>
+						<div class="collage"><i>College of Public Administration</i></div>
+						<div class="major">B.A in Information Management and Information System</div>
+					</div>
+				</div>
+			</div>
+			<div class="list-right">
+				<div class="intro-right">
+					<h2>Work Experience</h2>
+					<div class="work">
+						<div class="time">07/2014-09/2014</div>
+						<div class="company"><strong>InnerMongolia JiaoYuan Road and Bridge Design Company</strong></div>
+						<div class="experience">
+							<p><i>Intern: </i>Help maintian the management system and the contract database.</p>
+						</div>
+						<div class="time">07/2013-09/2013</div>
+						<div class="company"><strong>InnerMongolia JiaoYuan Road and Bridge Design Company</strong></div>
+						<div class="experience">
+							<p><i>Intern: </i>Working as a inten. Help design and establish the database for the contract management system.Use PHP for establishing part of the contract management function.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="divide">
+			<img class="title" src="https://cdn2.iconfinder.com/data/icons/thin-line-icons-for-seo-and-development-1/64/SEO_social_media-95-128.png" style="padding-top: 10px;">
+		</div>
+		<div class="rows">
+			<div class="list-left">
+				<div class="intro-left">
+					<h2>Skills</h2>
+					<div class="skillcon">
+						<div class="skill-left" style="height: 10px;">
+							<div class="rule-left">
+								<div class="rulenote-left"></div>
+								<div class="rulenote-left"></div>
+								<div class="rulenote-left" style="margin-left: 0px;"></div>
+							</div>
+						</div>
+						<div class="skill-left">
+							<div class="progress-left" style="width: 225px;"><span>Python</span></div>
+						</div>
+						<div class="skill-left">
+							<div class="progress-left" style="width: 195px;"><span>PHP</span></div>
+						</div>
+						<div class="skill-left">
+							<div class="progress-left" style="width: 150px;"><span>JavaScript</span></div>
+						</div>
+						<div class="skill-left">
+							<div class="progress-left" style="width: 195px;"><span>HTML5&CSS3</span></div>
+						</div>	
+						<div class="skill-left">
+							<div class="progress-left" style="width: 225px;">
+								<span>SQL</span>
+							</div>
+						</div>
+						<div class="else">
+							<span><strong>Else:</strong></span>
+							<span class="know">TCP/IP</span>
+							<span class="know">iOS</span>
+							<span class="know">UML</span>
+						</div>
+					</div>	
+				</div>
+			</div>
+			<div class="list-right">
+				<div class="intro-right">
+					<h2>Language</h2>
+					<div class="skillcon">
+						<div class="skill-right" style="height: 10px;">
+							<div class="rule-right">
+								<div class="rulenote-right"></div>
+								<div class="rulenote-right"></div>
+								<div class="rulenote-right" style="margin-right: 0px;"></div>
+							</div>
+						</div>
+						<div class="skill-right">
+							<div class="progress-right" style="width: 260px;"><span>Chinese</span></div>
+						</div>
+						<div class="skill-right">
+							<div class="progress-right" style="width: 225px;"><span>English</span></div>
+						</div>
+						<div class="skill-right">
+							<div class="progress-right" style="width: 100px;"><span>Janpanese</span></div>
+						</div>
+					</div>
+					<h2>Hobby</h2>
+					<div class="skillcon">
+						<div class="hobby">
+							<span>Planting Flowers</span>
+							<span></span>
+						</div>
+						<div class="hobby">
+							<span>Travel</span>
+							<span></span>
+						</div>
+						<div class="hobby">
+							<span>Photography</span>
+							<span></span>
+						</div>
+						<div class="hobby">
+							<span>Guitar</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<footer class="foot">
+			<a href="http://www.pypifrog.xyz">
+			<img class="social" src="https://cdn0.iconfinder.com/data/icons/social-network-9/50/37-128.png">
+			</a>
+			<a href="https://www.linkedin.com/in/xuzhe-dang-b32658115">
+			<img class="social" src="https://cdn0.iconfinder.com/data/icons/social-network-9/50/9-128.png">
+			</a>
+			<a href="https://github.com/LEOBox">
+			<img class="social" src="https://cdn0.iconfinder.com/data/icons/social-network-9/50/29-128.png">
+			</a>
+		</footer>
+	</div>
+{% endblock %}

@@ -1,0 +1,6 @@
+{% extends "adminhead.html" %}
+{% block body %}
+	{% for file in filenames %}
+			<img src="{{url_for('static',filename=''+file)}}" style="height: 50px; width: 50px;">
+	{% endfor %}
+{% endblock %}
