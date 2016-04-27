@@ -2,29 +2,23 @@
 {% block body %}
 
 <div class="row" style="background-color: #F5F6F9;padding-right: 0px">
-	<div class="col-md-2" style="min-height: 650px; background-color: #339999">
-		<h3 style="color: white">About Us</h3>
-		<div class="row">
-			<div class="col-md-6 col-md-offset-3">
-				<img class = "img-rounded img-responsive" src="{{url_for('static',filename='uploads/logo.png')}}">
-				<span style="color: white; padding-bottom: 10px">Mayukh</span>
-			</div>
-		</div>
+	<div class="wrapper">
+   		<img style="width: 100%; height: 100%" src="{{url_for('static',filename = 'uploads/hospital.png')}}" class="img-responsive" alt="Responsive image">
 	</div>
-	<div class="col-md-10" style="padding: 0px;background-color: #F5F6F9">
-		<div class="row">
-			<div class="col-md-8 col-md-offset-2">
-			<h1 style="color: #000000">PyPiFrog</h1>
-				{% for post in posts %}
-					<article>
-						<a href="/articles/{{post.id}}" style="text-decoration: None">
-							<h2>{{post.title}}</h2>
-							<p style="color:gray">{{post.types}} | {{post.date}}</p>
-						</a>
-					</article>	
-				{% endfor %}				
-			</div>
-		</div>
+	
+</div>
+<div class="row" style="padding-left: 50px; padding-right: 50px;">
+	<div class="col-md-4">
+		<h2 style="color: #FCC">TEST_COL_1</h2>
+		<p>This is some thing abuout the project in the col-1</p>
+	</div>
+	<div class="col-md-4">
+		<h2 style="color: #FCC">TEST_COL_2</h2>
+		<p>This is some thing about the project in the col-2</p>
+	</div>
+	<div class="col-md-4">
+		<h2 style="color: #FCC">TEST_COL_3</h2>
+		<p>This is some thing about the project in the col-3</p>	
 	</div>
 </div>
 
