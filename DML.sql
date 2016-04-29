@@ -8,7 +8,9 @@ on Patient
 after insert
 as
 begin
-delete Register where Register_ID = (select Patient_ID from inserted)
+declare @RID = (select Register_ID from Register where Register_ID = (select Patient_ID from inserted))
+if @RID is not null
+	delete Register where Register_ID = (select Patient_ID from inserted)
 end
 
 go
